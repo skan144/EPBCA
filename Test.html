@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EPB Chat App</title>
+    <script
+    src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+    crossorigin="anonymous"></script>
+    <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+    crossorigin="anonymous"></script>
+    <script src="todo.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Sansita+Swashed:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    <link href="todo.css" rel="stylesheet" />
+
+</head>
+<body>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand">EPB Chat App Test</a>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#nav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <li class="nav-item" >
+            <a class="nav-link" href="aboutusca.html">About Us</a>
+          </li>  
+
+        <div class="collapse navbar-collapse" id="nav">
+            <div class="form-inline ml-auto" id="signin-form">
+                <button class="btn btn-info mr-1" data-toggle="modal" data-target="#modal">Sign Up</button>
+                <button class="btn btn-info" data-toggle="modal" data-target="#modal-login">Log in</button>
+            </div>
+            <div class="form-inline ml-auto" id="signout-form" style="display: none;">
+                <button class="btn btn-info mr-1" id="signout-btn">Sign Out</button>
+            </div>
+        </div>
+       
+    </nav>
+
+    <p>
+			<a href="aboutusca.html" target="_blank">second page</a>
+	</p>
+
+    <div class="container mt-5 pt-3">
+        <div class="row justify-content-md-between">
+            <!-- <div class="col-12 col-md-8 col-lg"> --> 
+            <div class="col-5 align-self-start">
+                <p>
+                    Welcome to the EPB Chat App. This is a basic app designed for real time chat between anyone who signs up. Check out 'About us for more info'
+                </p>
+            </div>
+            <div class="col-4 right">
+                <p>
+                    Please sign in, create a username and have fun
+                </p>
+            </div>
+        </div>
+<!-- created new dic class container for 'log into use' message as it was too high up -->
+        <div class="container mt-5 pt-3">
+            <div class="row justify-content-md-between">
+                <!-- <div class="col-12 col-md-8 col-lg"> --> 
+                <div class="col">
+        <div class="row text-center" id="login-message">
+            <p class="col">Log in to use the Chat App !</p>
+        </div>
+        <ul id="list" class="list-unstyled">
+        </ul>
+        <form id="add" class="input-group">
+            <input type="text" placeholder="Input your task here..." class="form-control" id="adding" />
+            <div class="input-group-append">
+                <button class="btn btn-success w-100">Add</button>
+            </div>
+        </form>
+    </div>
+    <div class="modal fade" id="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Sign up</h5>
+                </div>
+                <div class="modal-body" id="modal-body">
+                    <form id="signup-form">
+                        <p class="form-text text-danger" id="signup-error"></p>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" class="form-control" id="signup-email" />
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" class="form-control" id="signup-pwd" />
+                        </div>
+                        <div class="form-group">
+                            <label>Confirm password</label>
+                            <input type="password" class="form-control" id="signup-pwd-confirm" />
+                        </div>
+                    <div class="form-group">
+                            <label>Username</label>
+                            <input type="username" class="form-control" id="username" />
+                    </div>   
+                        <div class="form-group custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="signup-remember" />
+                            <label class="custom-control-label" for="signup-remember">Remember me</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                  <button type="button" class="btn btn-primary" id="confirm-signup">Sign up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modal-login">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Log in</h5>
+                </div>
+                <div class="modal-body" id="modal-body">
+                    <form id="login-form">
+                        <p class="form-text text-danger" id="login-error"></p>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" class="form-control" id="email" />
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" class="form-control" id="pwd" />
+                        </div>
+                        <div class="form-group custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="login-remember" />
+                            <label class="custom-control-label" for="login-remember">Remember me</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                  <button type="button" class="btn btn-primary" id="confirm-login">Login</button>
+                  <button type="button" class="btn btn-danger" id="google"><i class="fab fa-google"></i> Google</button>
+                  <button type="button" class="btn btn-dark" id="github"><i class="fab fa-github"></i> Github</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-auth.js"></script>
+
+    <script>
+    // Your web app's Firebase configuration
+        var firebaseConfig = {
+          apiKey: "AIzaSyBTc23olbjH9EaL7G3BQJCAfhebgvJnqMs",
+          authDomain: "todolist-1756.firebaseapp.com",
+          databaseURL: "https://todolist-1756.firebaseio.com",
+          projectId: "todolist-1756",
+          storageBucket: "todolist-1756.appspot.com",
+          messagingSenderId: "925002393415",
+          appId: "1:925002393415:web:4619c3c89a92d941618e62"
+    }
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    var database = firebase.database();
+    var auth = firebase.auth();
+    var google = new firebase.auth.GoogleAuthProvider();
+    var github = new firebase.auth.GithubAuthProvider();
+    // database.ref("/test").set({
+    //     title: "Todo List",
+    //     text: "Hello world!"
+    // });
+    // database.ref("/testing").once('value').then(function(snapshot){
+    //     let value = snapshot.val();
+    //     console.log(value.title);
+    // });
+
+    // auth.createUserWithEmailAndPassword("kaamiljasani@gmail.com", "123").then(function(result){
+    //     console.log(result);
+    // }).catch(function(error){
+    //     console.log(error);
+    //     alert(error.message);
+    // });
+    </script>
+</body>
+</html>
